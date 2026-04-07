@@ -85,31 +85,52 @@ The solution follows a layered Business Intelligence architecture:
 
 ![ETL Process](docs/etl_flow.png)
 
----
-
 ### 🔹 ETL Process Description
 
-#### 📥 Extraction
-- Data extracted from Excel sources (SAP simulation)
+The ETL process was designed following a structured and layered approach to ensure data quality, consistency, and reliability.
 
-#### 🔧 Transformation
-- Data cleaning (handling nulls, formats)
-- Data standardization
-- Business rules validation
+#### 1. Technical Data Cleaning (Source Layer)
+- Initial preprocessing of source Excel files
+- Handling missing values, incorrect formats, and duplicates
+- Standardizing column names and data types
 
-#### 🧠 Data Quality
-- Rejected records stored in error tables
-- Logging and traceability implemented
+👉 This step ensures that only clean and usable data enters the pipeline.
 
-#### 📤 Loading
+---
 
-- **Dimensions**
-  - Loaded using **SCD Type 1**
-  - Overwrites old values (no history)
+#### 2. Loading into Staging Area
+- Cleaned data is loaded into a **staging database**
+- Acts as an intermediate layer between sources and the data warehouse
+- Preserves raw data for traceability and debugging
 
-- **Fact Tables**
-  - Incremental loading
-  - Linked via surrogate keys
+---
+
+#### 3. Business Transformation (Transformation Layer)
+- Application of **business rules** using:
+  - Lookups (to map dimension keys)
+  - Data enrichment and validation
+- Ensures data consistency across dimensions and facts
+
+---
+
+#### 4. Loading into Data Warehouse
+- Final structured data is loaded into the Data Warehouse
+- Organized using a **constellation schema**
+
+---
+
+#### 5. Dimension Management (SCD Type 1)
+- Dimensions are managed using **Slowly Changing Dimension Type 1**
+  - Existing records are overwritten
+  - No historical tracking is maintained
+  - Chosen for simplicity and performance
+
+---
+
+#### 🔹 Key Benefits of This Approach
+- Clear separation between technical and business processing
+- Improved data quality and reliability
+- Better maintainability and scalability of the ETL pipeline
 
 ---
 
