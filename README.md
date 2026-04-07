@@ -71,6 +71,7 @@ The solution follows a layered Business Intelligence architecture:
 
 ### 🔹 Dimension Tables
 - **Dim_Product** (Product ID, Name, Category)
+- **Dim_Orders** (Order ID, Order Type, Order Status)
 - **Dim_Supplier** (Supplier ID, Name, Location)
 - **Dim_Date** (Date, Month, Year, Quarter)
 - **Dim_Warehouse** (Warehouse ID, Region, City)
