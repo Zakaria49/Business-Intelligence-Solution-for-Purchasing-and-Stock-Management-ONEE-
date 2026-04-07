@@ -1,0 +1,2577 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/31/2025 1:46:20 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-5MS8VAL"
+  DTS:CreatorName="DESKTOP-5MS8VAL\Zakar"
+  DTS:DTSID="{FCEB5494-EAC3-43CA-AAAD-E01FB080E7EC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5685.2"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="LOAD_FAIT_STOCK_MOUVEMENT"
+  DTS:PackageType="5"
+  DTS:VersionBuild="86"
+  DTS:VersionGUID="{17D25F71-CB9A-4E1C-B4ED-20EAC4AE5535}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{3C18E8D5-A9C5-4CC7-A43E-F87B6A25D6FA}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Zakar\Downloads\ERP_BrancheEau_Staging_3ans\excel\Staging_Produits.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{34A89B84-8287-45C9-B8C0-821851CA81AE}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Zakar\Downloads\ERP_BrancheEau_Staging_3ans\excel\Staging_Lignes_Commandes.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 2]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{38CF44CB-B587-4610-8A36-6D1FE6D6A90E}"
+      DTS:ObjectName="Excel Connection Manager 2">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Zakar\Downloads\ERP_BrancheEau_Staging_3ans\excel\Staging_Mouvements_Stock.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 3]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{184AD334-7B78-46D0-8BDA-04D08097CB2E}"
+      DTS:ObjectName="Excel Connection Manager 3">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\Zakar\Downloads\ERP_BrancheEau_Staging_3ans_modified\Staging_Mouvements_Stock_2.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.DWH_ONEE]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{1CFDEE06-7A69-433B-8700-49697C798D21}"
+      DTS:ObjectName="localhost.DWH_ONEE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=DWH_ONEE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-LOAD_DIM_PRODUIT-{1CFDEE06-7A69-433B-8700-49697C798D21}localhost.DWH_ONEE;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.STAGING_ONEE]"
+      DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"
+      DTS:DTSID="{C054CF47-6FE1-4560-859B-DCFD9422BAF6}"
+      DTS:ObjectName="localhost.STAGING_ONEE">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=STAGING_ONEE;Integrated Security=True;TrustServerCertificate=True;Application Name=SSIS-LOAD_DIM_PRODUIT-{C054CF47-6FE1-4560-859B-DCFD9422BAF6}localhost.STAGING_ONEE;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[localhost.STAGING_ONEE1]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B0084E1B-3367-4DBE-A921-FFC892DF44C5}"
+      DTS:ObjectName="localhost.STAGING_ONEE1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=localhost;Initial Catalog=STAGING_ONEE;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-LOAD_DIM_PRODUIT-{B0084E1B-3367-4DBE-A921-FFC892DF44C5}localhost.STAGING_ONEE1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT 1 - Excel vers Staging"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{B2F4238E-C691-467C-9CF0-DB227126DCBD}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT 1 - Excel vers Staging"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT 1 - Excel vers Staging\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT 1 - Excel vers Staging\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Derived Column.Inputs[Derived Column Input].Columns[CODE_PRODUIT_BK]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CODE_PRODUIT_BK"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[CODE_PRODUIT_BK]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[UPPER]([TRIM](#{Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[CODE_PRODUIT_BK]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">UPPER(TRIM(CODE_PRODUIT_BK))</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Derived Column.Inputs[Derived Column Input].Columns[CODE_ENTREPOT_BK]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CODE_ENTREPOT_BK"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[CODE_ENTREPOT_BK]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[UPPER]([TRIM](#{Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[CODE_ENTREPOT_BK]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">UPPER(TRIM(CODE_ENTREPOT_BK))</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Derived Column.Inputs[Derived Column Input].Columns[CODE_MOUV_BK]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CODE_MOUV_BK"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[CODE_MOUV_BK]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[UPPER]([TRIM](#{Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[CODE_MOUV_BK]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">UPPER(TRIM(CODE_MOUV_BK))</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT 1 - Excel vers Staging\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT 1 - Excel vers Staging\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT 1 - Excel vers Staging\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT 1 - Excel vers Staging\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT 1 - Excel vers Staging\Excel Source"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Source"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Sheet1$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT 1 - Excel vers Staging\Excel Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 3]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 3]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[CODE_PRODUIT_BK]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[CODE_PRODUIT_BK]"
+                      length="255"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[CODE_PRODUIT_BK]"
+                      name="CODE_PRODUIT_BK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[CODE_ENTREPOT_BK]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[CODE_ENTREPOT_BK]"
+                      length="255"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[CODE_ENTREPOT_BK]"
+                      name="CODE_ENTREPOT_BK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[DATE_MOUVEMENT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[DATE_MOUVEMENT]"
+                      length="255"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[DATE_MOUVEMENT]"
+                      name="DATE_MOUVEMENT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[CODE_MOUV_BK]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[CODE_MOUV_BK]"
+                      length="255"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[CODE_MOUV_BK]"
+                      name="CODE_MOUV_BK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[QUANTITE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[QUANTITE]"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[QUANTITE]"
+                      name="QUANTITE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[VALEUR_MOUVEMENT]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[VALEUR_MOUVEMENT]"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[VALEUR_MOUVEMENT]"
+                      name="VALEUR_MOUVEMENT"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[CODE_PRODUIT_BK]"
+                      dataType="wstr"
+                      length="255"
+                      name="CODE_PRODUIT_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[CODE_ENTREPOT_BK]"
+                      dataType="wstr"
+                      length="255"
+                      name="CODE_ENTREPOT_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[DATE_MOUVEMENT]"
+                      dataType="wstr"
+                      length="255"
+                      name="DATE_MOUVEMENT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[CODE_MOUV_BK]"
+                      dataType="r8"
+                      name="CODE_MOUV_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[QUANTITE]"
+                      dataType="r8"
+                      name="QUANTITE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].ExternalColumns[VALEUR_MOUVEMENT]"
+                      dataType="r8"
+                      name="VALEUR_MOUVEMENT" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output].Columns[DATE_MOUVEMENT]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output].Columns[DATE_MOUVEMENT]"
+                      name="DATE_MOUVEMENT" />
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output].Columns[CODE_PRODUIT_BK]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output].Columns[CODE_PRODUIT_BK]"
+                      name="CODE_PRODUIT_BK" />
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output].Columns[CODE_ENTREPOT_BK]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output].Columns[CODE_ENTREPOT_BK]"
+                      name="CODE_ENTREPOT_BK" />
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output].Columns[CODE_MOUV_BK]"
+                      dataType="r8"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output].Columns[CODE_MOUV_BK]"
+                      name="CODE_MOUV_BK" />
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output].Columns[QUANTITE]"
+                      dataType="r8"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output].Columns[QUANTITE]"
+                      name="QUANTITE" />
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output].Columns[VALEUR_MOUVEMENT]"
+                      dataType="r8"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output].Columns[VALEUR_MOUVEMENT]"
+                      name="VALEUR_MOUVEMENT" />
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Staging_Mouvements_Stock]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.STAGING_ONEE1]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.STAGING_ONEE1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[VALEUR_MOUVEMENT]"
+                      cachedDataType="r8"
+                      cachedName="VALEUR_MOUVEMENT"
+                      externalMetadataColumnId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VALEUR_MOUVEMENT]"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[VALEUR_MOUVEMENT]" />
+                    <inputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DATE_MOUVEMENT]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DATE_MOUVEMENT"
+                      externalMetadataColumnId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DATE_MOUVEMENT]"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[DATE_MOUVEMENT]" />
+                    <inputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CODE_PRODUIT_BK]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CODE_PRODUIT_BK"
+                      externalMetadataColumnId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CODE_PRODUIT_BK]"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[CODE_PRODUIT_BK]" />
+                    <inputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CODE_ENTREPOT_BK]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CODE_ENTREPOT_BK"
+                      externalMetadataColumnId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CODE_ENTREPOT_BK]"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[CODE_ENTREPOT_BK]" />
+                    <inputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[CODE_MOUV_BK]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CODE_MOUV_BK"
+                      externalMetadataColumnId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CODE_MOUV_BK]"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[CODE_MOUV_BK]" />
+                    <inputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[QUANTITE]"
+                      cachedDataType="r8"
+                      cachedName="QUANTITE"
+                      externalMetadataColumnId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[QUANTITE]"
+                      lineageId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output].Columns[QUANTITE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VALEUR_MOUVEMENT]"
+                      dataType="wstr"
+                      length="255"
+                      name="VALEUR_MOUVEMENT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DATE_MOUVEMENT]"
+                      dataType="wstr"
+                      length="255"
+                      name="DATE_MOUVEMENT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CODE_PRODUIT_BK]"
+                      dataType="wstr"
+                      length="255"
+                      name="CODE_PRODUIT_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CODE_ENTREPOT_BK]"
+                      dataType="wstr"
+                      length="255"
+                      name="CODE_ENTREPOT_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[CODE_MOUV_BK]"
+                      dataType="wstr"
+                      length="255"
+                      name="CODE_MOUV_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[QUANTITE]"
+                      dataType="wstr"
+                      length="255"
+                      name="QUANTITE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT 1 - Excel vers Staging.Paths[Derived Column Output]"
+              endId="Package\DFT 1 - Excel vers Staging\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DFT 1 - Excel vers Staging\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT 1 - Excel vers Staging.Paths[Excel Source Output]"
+              endId="Package\DFT 1 - Excel vers Staging\Derived Column.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\DFT 1 - Excel vers Staging\Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT2- Staging ver DWH"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{9E4E8B76-94F4-4D3A-9304-BF4F0A36B8FF}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT2- Staging ver DWH"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT2- Staging ver DWH\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT2- Staging ver DWH\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\Data Conversion.Inputs[Data Conversion Input].Columns[DATE_MOUVEMENT]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="DATE_MOUVEMENT"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[DATE_MOUVEMENT]" />
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\Data Conversion.Inputs[Data Conversion Input].Columns[QUANTITE]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="QUANTITE"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[QUANTITE]" />
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\Data Conversion.Inputs[Data Conversion Input].Columns[VALEUR_MOUVEMENT]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="VALEUR_MOUVEMENT"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[VALEUR_MOUVEMENT]" />
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\Data Conversion.Inputs[Data Conversion Input].Columns[CODE_PRODUIT_BK]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CODE_PRODUIT_BK"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE_PRODUIT_BK]" />
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\Data Conversion.Inputs[Data Conversion Input].Columns[CODE_ENTREPOT_BK]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CODE_ENTREPOT_BK"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE_ENTREPOT_BK]" />
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\Data Conversion.Inputs[Data Conversion Input].Columns[CODE_MOUV_BK]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="CODE_MOUV_BK"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE_MOUV_BK]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DATE_MOUVEMENT]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DATE_MOUVEMENT]"
+                      name="Copy of DATE_MOUVEMENT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[DATE_MOUVEMENT]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of QUANTITE]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of QUANTITE]"
+                      name="Copy of QUANTITE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[QUANTITE]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of VALEUR_MOUVEMENT]"
+                      dataType="decimal"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of VALEUR_MOUVEMENT]"
+                      name="Copy of VALEUR_MOUVEMENT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[VALEUR_MOUVEMENT]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CODE_PRODUIT_BK]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CODE_PRODUIT_BK]"
+                      name="Copy of CODE_PRODUIT_BK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE_PRODUIT_BK]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CODE_ENTREPOT_BK]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CODE_ENTREPOT_BK]"
+                      name="Copy of CODE_ENTREPOT_BK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE_ENTREPOT_BK]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CODE_MOUV_BK]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="255"
+                      lineageId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CODE_MOUV_BK]"
+                      name="Copy of CODE_MOUV_BK"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE_MOUV_BK]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT2- Staging ver DWH\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT2- Staging ver DWH\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\Derived Column.Inputs[Derived Column Input].Columns[Copy of QUANTITE]"
+                      cachedDataType="i4"
+                      cachedName="Copy of QUANTITE"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of QUANTITE]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[TRIM](#{Package\DFT2- Staging ver DWH\Lookup 3.Outputs[Lookup Match Output].Columns[SENS_FLUX]}) == "Sortie" ? (#{Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of QUANTITE]} * -1) : #{Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of QUANTITE]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(SENS_FLUX) == "Sortie" ? ([Copy of QUANTITE] * -1) : [Copy of QUANTITE]</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\Derived Column.Inputs[Derived Column Input].Columns[Copy of VALEUR_MOUVEMENT]"
+                      cachedDataType="decimal"
+                      cachedName="Copy of VALEUR_MOUVEMENT"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of VALEUR_MOUVEMENT]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[TRIM](#{Package\DFT2- Staging ver DWH\Lookup 3.Outputs[Lookup Match Output].Columns[SENS_FLUX]}) == "Sortie" ? (#{Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of VALEUR_MOUVEMENT]} * -1) : #{Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of VALEUR_MOUVEMENT]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(SENS_FLUX) == "Sortie" ? ([Copy of VALEUR_MOUVEMENT] * -1) : [Copy of VALEUR_MOUVEMENT]</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\Derived Column.Inputs[Derived Column Input].Columns[SENS_FLUX]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="SENS_FLUX"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup 3.Outputs[Lookup Match Output].Columns[SENS_FLUX]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT2- Staging ver DWH\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT2- Staging ver DWH\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT2- Staging ver DWH\Lookup"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DIM_TEMPS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DIM_TEMPS]) [refTable]
+where [refTable].[DATE_COMPLETE] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID_DATE" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="DATE_COMPLETE" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ANNEE" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TRIMESTRE" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="MOIS" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="JOUR" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DATE_MOUVEMENT]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT2- Staging ver DWH\Lookup.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DWH_ONEE]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DWH_ONEE]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT2- Staging ver DWH\Lookup.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup.Inputs[Lookup Input].Columns[Copy of DATE_MOUVEMENT]"
+                      cachedDataType="dbDate"
+                      cachedName="Copy of DATE_MOUVEMENT"
+                      lineageId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of DATE_MOUVEMENT]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">DATE_COMPLETE</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\Lookup.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup.Outputs[Lookup Match Output].Columns[ID_DATE]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup.Outputs[Lookup Match Output].Columns[ID_DATE]"
+                      name="ID_DATE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ID_DATE</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\Lookup.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\Lookup.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\Lookup.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\Lookup.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT2- Staging ver DWH\Lookup 1"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup 1"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DIM_PRODUIT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DIM_PRODUIT]) [refTable]
+where [refTable].[CODE_PRODUIT_BK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID_PRODUIT" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CODE_PRODUIT_BK" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="NOM_PRODUIT" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CATEGORIE" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="UNITE_MESURE" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CODE_PRODUIT_BK]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT2- Staging ver DWH\Lookup 1.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DWH_ONEE]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DWH_ONEE]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT2- Staging ver DWH\Lookup 1.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup 1.Inputs[Lookup Input].Columns[Copy of CODE_PRODUIT_BK]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Copy of CODE_PRODUIT_BK"
+                      lineageId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CODE_PRODUIT_BK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CODE_PRODUIT_BK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\Lookup 1.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\Lookup 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup 1.Outputs[Lookup Match Output].Columns[ID_PRODUIT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup 1.Outputs[Lookup Match Output].Columns[ID_PRODUIT]"
+                      name="ID_PRODUIT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ID_PRODUIT</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\Lookup 1.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\Lookup 1.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\Lookup 1.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\Lookup 1.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup 1.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT2- Staging ver DWH\Lookup 2"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup 2"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DIM_ENTREPOT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DIM_ENTREPOT]) [refTable]
+where [refTable].[CODE_SITE_BK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID_ENTREPOT" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CODE_SITE_BK" dataType="DT_STR" length="30" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="NOM_SITE" dataType="DT_WSTR" length="150" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="REGION_ONEE" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TYPE_ENTREPOT" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CAPACITE_MAX" dataType="DT_NUMERIC" length="0" precision="18" scale="2" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CODE_ENTREPOT_BK]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT2- Staging ver DWH\Lookup 2.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DWH_ONEE]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DWH_ONEE]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT2- Staging ver DWH\Lookup 2.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup 2.Inputs[Lookup Input].Columns[Copy of CODE_ENTREPOT_BK]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Copy of CODE_ENTREPOT_BK"
+                      lineageId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CODE_ENTREPOT_BK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CODE_SITE_BK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\Lookup 2.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\Lookup 2.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup 2.Outputs[Lookup Match Output].Columns[ID_ENTREPOT]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup 2.Outputs[Lookup Match Output].Columns[ID_ENTREPOT]"
+                      name="ID_ENTREPOT"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ID_ENTREPOT</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\Lookup 2.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\Lookup 2.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\Lookup 2.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\Lookup 2.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup 2.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT2- Staging ver DWH\Lookup 3"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup 3"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DIM_TYPE_MOUVEMENT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DIM_TYPE_MOUVEMENT]) [refTable]
+where [refTable].[CODE_MOUV_BK] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ID_TYPE_MOUV" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="CODE_MOUV_BK" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="NOM_MOUVEMENT" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="SENS_FLUX" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CODE_MOUV_BK]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT2- Staging ver DWH\Lookup 3.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DWH_ONEE]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DWH_ONEE]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT2- Staging ver DWH\Lookup 3.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup 3.Inputs[Lookup Input].Columns[Copy of CODE_MOUV_BK]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Copy of CODE_MOUV_BK"
+                      lineageId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of CODE_MOUV_BK]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">CODE_MOUV_BK</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\Lookup 3.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\Lookup 3.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup 3.Outputs[Lookup Match Output].Columns[ID_TYPE_MOUV]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup 3.Outputs[Lookup Match Output].Columns[ID_TYPE_MOUV]"
+                      name="ID_TYPE_MOUV"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ID_TYPE_MOUV</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup 3.Outputs[Lookup Match Output].Columns[SENS_FLUX]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="20"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup 3.Outputs[Lookup Match Output].Columns[SENS_FLUX]"
+                      name="SENS_FLUX"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">SENS_FLUX</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\Lookup 3.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\Lookup 3.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\Lookup 3.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\Lookup 3.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup 3.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup 3.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\Lookup 3.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup 3.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT2- Staging ver DWH\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[FAIT_STOCK_MOUVEMENT]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.DWH_ONEE]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.DWH_ONEE]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID_PRODUIT]"
+                      cachedDataType="i4"
+                      cachedName="ID_PRODUIT"
+                      externalMetadataColumnId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_PRODUIT]"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup 1.Outputs[Lookup Match Output].Columns[ID_PRODUIT]" />
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID_ENTREPOT]"
+                      cachedDataType="i4"
+                      cachedName="ID_ENTREPOT"
+                      externalMetadataColumnId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_ENTREPOT]"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup 2.Outputs[Lookup Match Output].Columns[ID_ENTREPOT]" />
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of QUANTITE]"
+                      cachedDataType="i4"
+                      cachedName="Copy of QUANTITE"
+                      externalMetadataColumnId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[QUANTITE_MOUVEMENT]"
+                      lineageId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of QUANTITE]" />
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Copy of VALEUR_MOUVEMENT]"
+                      cachedDataType="decimal"
+                      cachedName="Copy of VALEUR_MOUVEMENT"
+                      externalMetadataColumnId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VALEUR_MOUVEMENT]"
+                      lineageId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of VALEUR_MOUVEMENT]" />
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID_TYPE_MOUV]"
+                      cachedDataType="i4"
+                      cachedName="ID_TYPE_MOUV"
+                      externalMetadataColumnId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_TYPE_MOUVEMENT]"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup 3.Outputs[Lookup Match Output].Columns[ID_TYPE_MOUV]" />
+                    <inputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID_DATE]"
+                      cachedDataType="i4"
+                      cachedName="ID_DATE"
+                      externalMetadataColumnId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_DATE_MOUVEMENT]"
+                      lineageId="Package\DFT2- Staging ver DWH\Lookup.Outputs[Lookup Match Output].Columns[ID_DATE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_DATE_MOUVEMENT]"
+                      dataType="i4"
+                      name="ID_DATE_MOUVEMENT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_PRODUIT]"
+                      dataType="i4"
+                      name="ID_PRODUIT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_ENTREPOT]"
+                      dataType="i4"
+                      name="ID_ENTREPOT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID_TYPE_MOUVEMENT]"
+                      dataType="i4"
+                      name="ID_TYPE_MOUVEMENT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[QUANTITE_MOUVEMENT]"
+                      dataType="i4"
+                      name="QUANTITE_MOUVEMENT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[VALEUR_MOUVEMENT]"
+                      dataType="numeric"
+                      name="VALEUR_MOUVEMENT"
+                      precision="18"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT2- Staging ver DWH\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Staging_Mouvements_Stock]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT2- Staging ver DWH\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[localhost.STAGING_ONEE1]"
+                  connectionManagerRefId="Package.ConnectionManagers[localhost.STAGING_ONEE1]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[DATE_MOUVEMENT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DATE_MOUVEMENT]"
+                      length="255"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[DATE_MOUVEMENT]"
+                      name="DATE_MOUVEMENT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE_PRODUIT_BK]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CODE_PRODUIT_BK]"
+                      length="255"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE_PRODUIT_BK]"
+                      name="CODE_PRODUIT_BK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE_ENTREPOT_BK]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CODE_ENTREPOT_BK]"
+                      length="255"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE_ENTREPOT_BK]"
+                      name="CODE_ENTREPOT_BK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE_MOUV_BK]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CODE_MOUV_BK]"
+                      length="255"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[CODE_MOUV_BK]"
+                      name="CODE_MOUV_BK"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[QUANTITE]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[QUANTITE]"
+                      length="255"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[QUANTITE]"
+                      name="QUANTITE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[VALEUR_MOUVEMENT]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[VALEUR_MOUVEMENT]"
+                      length="255"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].Columns[VALEUR_MOUVEMENT]"
+                      name="VALEUR_MOUVEMENT"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DATE_MOUVEMENT]"
+                      dataType="wstr"
+                      length="255"
+                      name="DATE_MOUVEMENT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CODE_PRODUIT_BK]"
+                      dataType="wstr"
+                      length="255"
+                      name="CODE_PRODUIT_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CODE_ENTREPOT_BK]"
+                      dataType="wstr"
+                      length="255"
+                      name="CODE_ENTREPOT_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CODE_MOUV_BK]"
+                      dataType="wstr"
+                      length="255"
+                      name="CODE_MOUV_BK" />
+                    <externalMetadataColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[QUANTITE]"
+                      dataType="wstr"
+                      length="255"
+                      name="QUANTITE" />
+                    <externalMetadataColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[VALEUR_MOUVEMENT]"
+                      dataType="wstr"
+                      length="255"
+                      name="VALEUR_MOUVEMENT" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DATE_MOUVEMENT]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DATE_MOUVEMENT]"
+                      name="DATE_MOUVEMENT" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CODE_PRODUIT_BK]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CODE_PRODUIT_BK]"
+                      name="CODE_PRODUIT_BK" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CODE_ENTREPOT_BK]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CODE_ENTREPOT_BK]"
+                      name="CODE_ENTREPOT_BK" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CODE_MOUV_BK]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[CODE_MOUV_BK]"
+                      name="CODE_MOUV_BK" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[QUANTITE]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[QUANTITE]"
+                      name="QUANTITE" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[VALEUR_MOUVEMENT]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[VALEUR_MOUVEMENT]"
+                      name="VALEUR_MOUVEMENT" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT2- Staging ver DWH.Paths[Data Conversion Output]"
+              endId="Package\DFT2- Staging ver DWH\Lookup.Inputs[Lookup Input]"
+              name="Data Conversion Output"
+              startId="Package\DFT2- Staging ver DWH\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\DFT2- Staging ver DWH.Paths[Derived Column Output]"
+              endId="Package\DFT2- Staging ver DWH\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\DFT2- Staging ver DWH\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT2- Staging ver DWH.Paths[Lookup Match Output]"
+              endId="Package\DFT2- Staging ver DWH\Lookup 1.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT2- Staging ver DWH\Lookup.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT2- Staging ver DWH.Paths[Lookup Match Output1]"
+              endId="Package\DFT2- Staging ver DWH\Lookup 2.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT2- Staging ver DWH\Lookup 1.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT2- Staging ver DWH.Paths[Lookup Match Output2]"
+              endId="Package\DFT2- Staging ver DWH\Lookup 3.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT2- Staging ver DWH\Lookup 2.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT2- Staging ver DWH.Paths[Lookup Match Output3]"
+              endId="Package\DFT2- Staging ver DWH\Derived Column.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\DFT2- Staging ver DWH\Lookup 3.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\DFT2- Staging ver DWH.Paths[OLE DB Source Output]"
+              endId="Package\DFT2- Staging ver DWH\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\DFT2- Staging ver DWH\OLE DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{F147D855-5C19-4193-8EF5-F13BE4D0EA53}"
+      DTS:From="Package\DFT 1 - Excel vers Staging"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT2- Staging ver DWH" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="210,42"
+          Id="Package\DFT 1 - Excel vers Staging"
+          TopLeft="139,39" />
+        <NodeLayout
+          Size="198,42"
+          Id="Package\DFT2- Staging ver DWH"
+          TopLeft="170,177" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="244,81">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25,96"
+              Start="0,0"
+              End="25,88.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44"
+                    Point2="0,48"
+                    Point3="4,48" />
+                  <mssgle:LineSegment
+                    End="21,48" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21,48"
+                    Point2="25,48"
+                    Point3="25,52" />
+                  <mssgle:LineSegment
+                    End="25,88.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT 1 - Excel vers Staging">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="177,42"
+          Id="Package\DFT 1 - Excel vers Staging\OLE DB Destination"
+          TopLeft="186,230" />
+        <NodeLayout
+          Size="144,42"
+          Id="Package\DFT 1 - Excel vers Staging\Excel Source"
+          TopLeft="139,39" />
+        <NodeLayout
+          Size="158,42"
+          Id="Package\DFT 1 - Excel vers Staging\Derived Column"
+          TopLeft="350,127" />
+        <EdgeLayout
+          Id="Package\DFT 1 - Excel vers Staging.Paths[Excel Source Output]"
+          TopLeft="211,81">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="218,46"
+              Start="0,0"
+              End="218,38.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19"
+                    Point2="0,23"
+                    Point3="4,23" />
+                  <mssgle:LineSegment
+                    End="214,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="214,23"
+                    Point2="218,23"
+                    Point3="218,27" />
+                  <mssgle:LineSegment
+                    End="218,38.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT 1 - Excel vers Staging.Paths[Derived Column Output]"
+          TopLeft="429,169">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-154.5,61"
+              Start="0,0"
+              End="-154.5,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="-4,30.5" />
+                  <mssgle:LineSegment
+                    End="-150.5,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-150.5,30.5"
+                    Point2="-154.5,30.5"
+                    Point3="-154.5,34.5" />
+                  <mssgle:LineSegment
+                    End="-154.5,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT 1 - Excel vers Staging\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT 1 - Excel vers Staging\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT2- Staging ver DWH">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="158,42"
+          Id="Package\DFT2- Staging ver DWH\Derived Column"
+          TopLeft="441,297" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DFT2- Staging ver DWH\Data Conversion"
+          TopLeft="93.5,120.5" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\DFT2- Staging ver DWH\Lookup"
+          TopLeft="359,117" />
+        <NodeLayout
+          Size="124,42"
+          Id="Package\DFT2- Staging ver DWH\Lookup 2"
+          TopLeft="229,213" />
+        <NodeLayout
+          Size="177,42"
+          Id="Package\DFT2- Staging ver DWH\OLE DB Destination"
+          TopLeft="141,309" />
+        <NodeLayout
+          Size="157,42"
+          Id="Package\DFT2- Staging ver DWH\OLE DB Source"
+          TopLeft="70.5,15.5" />
+        <NodeLayout
+          Size="124,42"
+          Id="Package\DFT2- Staging ver DWH\Lookup 1"
+          TopLeft="410,207" />
+        <NodeLayout
+          Size="124,42"
+          Id="Package\DFT2- Staging ver DWH\Lookup 3"
+          TopLeft="46,210" />
+        <EdgeLayout
+          Id="Package\DFT2- Staging ver DWH.Paths[OLE DB Source Output]"
+          TopLeft="149,57.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25,63"
+              Start="0,0"
+              End="25,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.5"
+                    Point2="0,31.5"
+                    Point3="4,31.5" />
+                  <mssgle:LineSegment
+                    End="21,31.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21,31.5"
+                    Point2="25,31.5"
+                    Point3="25,35.5" />
+                  <mssgle:LineSegment
+                    End="25,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT2- Staging ver DWH.Paths[Lookup Match Output3]"
+          TopLeft="108,252">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="412,45"
+              Start="0,0"
+              End="412,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="4,22.5" />
+                  <mssgle:LineSegment
+                    End="408,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="408,22.5"
+                    Point2="412,22.5"
+                    Point3="412,26.5" />
+                  <mssgle:LineSegment
+                    End="412,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="157.80861328125,27.5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT2- Staging ver DWH.Paths[Lookup Match Output2]"
+          TopLeft="229,232.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-59,0"
+              Start="0,0"
+              End="-51.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-51.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-73.94138671875,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT2- Staging ver DWH.Paths[Lookup Match Output1]"
+          TopLeft="410,231">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-57,0"
+              Start="0,0"
+              End="-49.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-49.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-72.94138671875,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT2- Staging ver DWH.Paths[Lookup Match Output]"
+          TopLeft="416.5,159">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="55.5,48"
+              Start="0,0"
+              End="55.5,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20"
+                    Point2="0,24"
+                    Point3="4,24" />
+                  <mssgle:LineSegment
+                    End="51.5,24" />
+                  <mssgle:CubicBezierSegment
+                    Point1="51.5,24"
+                    Point2="55.5,24"
+                    Point3="55.5,28" />
+                  <mssgle:LineSegment
+                    End="55.5,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-20.44138671875,29,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT2- Staging ver DWH.Paths[Derived Column Output]"
+          TopLeft="441,318">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-123,12"
+              Start="0,0"
+              End="-115.5,12">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-57.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-57.5,0"
+                    Point2="-61.5,0"
+                    Point3="-61.5,4" />
+                  <mssgle:LineSegment
+                    End="-61.5,8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-61.5,8"
+                    Point2="-61.5,12"
+                    Point3="-65.5,12" />
+                  <mssgle:LineSegment
+                    End="-115.5,12" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT2- Staging ver DWH.Paths[Data Conversion Output]"
+          TopLeft="254.5,139.75">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="104.5,0"
+              Start="0,0"
+              End="97,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="97,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT2- Staging ver DWH\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DIM_TEMPS]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT2- Staging ver DWH\Lookup 2">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DIM_ENTREPOT]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT2- Staging ver DWH\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT2- Staging ver DWH\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT2- Staging ver DWH\Lookup 1">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DIM_PRODUIT]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT2- Staging ver DWH\Lookup 3">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DIM_TYPE_MOUVEMENT]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
