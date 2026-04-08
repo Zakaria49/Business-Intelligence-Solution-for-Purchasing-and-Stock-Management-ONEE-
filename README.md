@@ -27,9 +27,8 @@ The existing system faced several limitations:
 The solution follows a layered Business Intelligence architecture:
 
 ### 🔹 Architecture Diagram
-📌 *Add your architecture diagram here (ETL → DWH → Power BI)*
 
-![Architecture Diagram](C:\Users\Zakaria\Pictures\Screenshots\Architecture.png)
+![Architecture Diagram](./Images/Architecture.png)
 
 ---
 
@@ -54,9 +53,8 @@ The solution follows a layered Business Intelligence architecture:
 ## 🧩 Data Model (Constellation Schema)
 
 ### 🔹 Data Model Diagram
-📌 *Add your Star/Galaxy schema diagram here*
 
-![Data Model](C:\Users\Zakaria\Pictures\Screenshots\Star_Schema.png)
+![Data Model](./Images/Star_Schema.png)
 
 ---
 
@@ -84,7 +82,7 @@ The solution follows a layered Business Intelligence architecture:
 ### 🔹 ETL Workflow Diagram
 📌 *Add your SSIS workflow or ETL pipeline diagram here*
 
-![ETL Process](docs/etl_flow.png)
+![ETL Process](./Images/ETL-SSIS.png)
 
 ### 🔹 ETL Process Description
 
