@@ -30,7 +30,6 @@ The solution follows a layered Business Intelligence architecture:
 
 ![Architecture Diagram](./Images/Architecture.png)
 
----
 
 ### 🔹 Architecture Description
 1. **Data Sources**
@@ -54,9 +53,8 @@ The solution follows a layered Business Intelligence architecture:
 
 ### 🔹 Data Model Diagram
 
-![Data Model](./Images/Star_Schema.png)
+![Data Model](./Images/Star-Schema.png)
 
----
 
 ### 🔹 Fact Tables
 - **Fact_Purchases**
@@ -65,7 +63,6 @@ The solution follows a layered Business Intelligence architecture:
 - **Fact_Stock_Movements**
   - Quantity In, Quantity Out, Stock Variation
 
----
 
 ### 🔹 Dimension Tables
 - **Dim_Product** (Product ID, Name, Category)
@@ -80,7 +77,6 @@ The solution follows a layered Business Intelligence architecture:
 ## 🔄 ETL Strategy (SSIS)
 
 ### 🔹 ETL Workflow Diagram
-📌 *Add your SSIS workflow or ETL pipeline diagram here*
 
 ![ETL Process](./Images/ETL-SSIS.png)
 
@@ -136,7 +132,6 @@ The ETL process was designed following a structured and layered approach to ensu
 ## 📊 Power BI Dashboards
 
 ### 🔹 Dashboard Overview
-📌 *Add screenshots of your dashboards here*
 
 ![Dashboard 1](docs/screenshots/dashboard1.png)  
 ![Dashboard 2](docs/screenshots/dashboard2.png)
@@ -175,7 +170,3 @@ The ETL process was designed following a structured and layered approach to ensu
 3. Update connection strings
 4. Run ETL packages
 5. Open Power BI file and refresh data
-
----
-
-## 📁 Project Structure
