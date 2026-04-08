@@ -91,14 +91,12 @@ The ETL process was designed following a structured and layered approach to ensu
 
 👉 This step ensures that only clean and usable data enters the pipeline.
 
----
 
 #### 2. Loading into Staging Area
 - Cleaned data is loaded into a **staging database**
 - Acts as an intermediate layer between sources and the data warehouse
 - Preserves raw data for traceability and debugging
 
----
 
 #### 3. Business Transformation (Transformation Layer)
 - Application of **business rules** using:
@@ -106,13 +104,11 @@ The ETL process was designed following a structured and layered approach to ensu
   - Data enrichment and validation
 - Ensures data consistency across dimensions and facts
 
----
 
 #### 4. Loading into Data Warehouse
 - Final structured data is loaded into the Data Warehouse
 - Organized using a **constellation schema**
 
----
 
 #### 5. Dimension Management (SCD Type 1)
 - Dimensions are managed using **Slowly Changing Dimension Type 1**
@@ -120,7 +116,6 @@ The ETL process was designed following a structured and layered approach to ensu
   - No historical tracking is maintained
   - Chosen for simplicity and performance
 
----
 
 #### 🔹 Key Benefits of This Approach
 - Clear separation between technical and business processing
@@ -134,6 +129,7 @@ The ETL process was designed following a structured and layered approach to ensu
 ### 🔹 Dashboard Overview
 
 ![Dashboard 1](./Images/Dashboard-1.png)  
+
 ![Dashboard 2](./Images/dashboard-2.png)
 
 ---
@@ -158,7 +154,7 @@ The ETL process was designed following a structured and layered approach to ensu
 
 - **SQL Server** → Data Warehouse
 - **SSIS** → ETL
-- **Power BI** → Visualization
+- **Power BI + DAX** → Visualization
 - **Excel** → Data Sources
 
 ---
