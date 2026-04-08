@@ -133,8 +133,8 @@ The ETL process was designed following a structured and layered approach to ensu
 
 ### 🔹 Dashboard Overview
 
-![Dashboard 1](docs/screenshots/dashboard1.png)  
-![Dashboard 2](docs/screenshots/dashboard2.png)
+![Dashboard 1](./Images/Dashboard-1.png)  
+![Dashboard 2](./Images/dashboard-2.png)
 
 ---
 
